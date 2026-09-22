@@ -1,0 +1,64 @@
+model:
+  speech_backbone: checkpoints/hubert-large-ls960-ft
+  ifp_checkpoint: null
+  image_dim: 1280
+  text_dim: 512
+  projection_dim: 512
+  head_hidden_dim: 512
+  freeze_speech_backbone: false
+  adapter_hidden_dim: 512
+  visual_adapter_hidden_dim: 256
+  visual_adapter_scale: 0.1
+  visual_pool_temperature: 0.1
+  structure_topk: 5
+
+data:
+  train_manifest: Data/Speech-LVIS/targets/v1/train.jsonl
+  val_manifest: Data/Speech-LVIS/targets/v1/val.jsonl
+  train_target_root: Data/Speech-LVIS/targets/v1/shards/train
+  val_target_root: Data/Speech-LVIS/targets/v1/shards/val
+  train_image_indices:
+    - Data/Speech-LVIS/features/dinov3h_512/images_train_part_00_of_02.jsonl
+    - Data/Speech-LVIS/features/dinov3h_512/images_train_part_01_of_02.jsonl
+  val_image_indices:
+    - Data/Speech-LVIS/features/dinov3h_512/images_val_part_00_of_02.jsonl
+    - Data/Speech-LVIS/features/dinov3h_512/images_val_part_01_of_02.jsonl
+  train_image_feature_root: Data/Speech-LVIS/features/dinov3h_512/shards/train
+  val_image_feature_root: Data/Speech-LVIS/features/dinov3h_512/shards/val
+  speech_root: Data/Speech-LVIS/speech_bank/v1
+  text_features: Data/Speech-LVIS/features/clip_lvis_text_v1.pt
+  sample_rate: 16000
+  max_seconds: 6.0
+  max_prototypes: 5
+
+train:
+  device: cuda:0
+  seed: 20260824
+  min_epochs: 11
+  max_epochs: 100
+  patience: 10
+  min_delta: 0.0001
+  batch_size: 8
+  grad_accum_steps: 4
+  workers: 8
+  lr: 0.0002
+  visual_lr: 0.00005
+  backbone_lr: 0.00001
+  weight_decay: 0.0001
+  grad_clip: 1.0
+  amp_dtype: bfloat16
+  smoke_samples: 16
+
+loss:
+  speech_text_weight: 1.0
+  speech_visual_weight: 1.0
+  mask_weight: 1.0
+  structure_weight: 0.5
+  intra_weight: 0.5
+  background_weight: 0.5
+  temperature: 0.07
+  distill_temperature: 0.2
+  background_margin: 0.2
+
+output:
+  dir: outputs/sarad

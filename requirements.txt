@@ -1,0 +1,12 @@
+torch>=2.4
+torchvision>=0.19
+torchaudio>=2.4
+transformers>=4.44,<5
+numpy>=1.24
+Pillow>=9.1
+PyYAML>=6
+h5py>=3.8
+soundfile>=0.12
+librosa>=0.10
+torchmetrics>=1.4
+einops>=0.7
