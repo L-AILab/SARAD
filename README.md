@@ -124,6 +124,4 @@ benchmark split.
 The model uses
 [HuBERT](https://github.com/facebookresearch/fairseq/tree/main/examples/hubert),
 [DINOv3](https://github.com/facebookresearch/dinov3) and training text features from
-[CLIP](https://github.com/openai/CLIP). The threshold-sweep evaluation follows
-[DenseAV](https://github.com/mhamilton723/DenseAV). Their code and checkpoints
-retain their respective licenses.
+[CLIP](https://github.com/openai/CLIP).
