@@ -121,10 +121,9 @@ benchmark split.
 
 ## Acknowledgements
 
-The projection and focus/structure formulation follows IFP. The model uses
+The model uses
 [HuBERT](https://github.com/facebookresearch/fairseq/tree/main/examples/hubert),
 [DINOv3](https://github.com/facebookresearch/dinov3) and training text features from
 [CLIP](https://github.com/openai/CLIP). The threshold-sweep evaluation follows
 [DenseAV](https://github.com/mhamilton723/DenseAV). Their code and checkpoints
-retain their respective licenses. The repository layout was informed by
-[PromptPilot](https://github.com/L-AILab/PromptPilot); its model code is not bundled.
+retain their respective licenses.
